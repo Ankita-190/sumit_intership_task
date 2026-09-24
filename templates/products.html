@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+{% endblock %}
+{% block content %}
+<h1>Our Products</h1>
+
+<form class="search-box" method="get" action="{{ url_for('products') }}">
+    <input type="hidden" name="category" value="{{ selected }}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search product...">
+</form>
+
+<div class="categories">
+    <a href="{{ url_for('products', q=query) }}">
+        <button type="button" class="{% if selected == 'All' %}active{% endif %}">All</button>
+    </a>
+    {% for category in categories %}
+    <a href="{{ url_for('products', category=category, q=query) }}">
+        <button type="button" class="{% if selected == category %}active{% endif %}">{{ category }}</button>
+    </a>
+    {% endfor %}
+</div>
+
+<div class="product-container">
+    {% if not products %}
+        <div class="no-products">
+            <h2>No Products Available</h2>
+        </div>
+    {% endif %}
+    {% for product, pricing in products %}
+        <div class="product">
+            <div class="product-image">
+                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            </div>
+            <h2>{{ product.name }}</h2>
+            <p>Category: {{ product.category }}</p>
+            <p class="category-discount">Category Discount: {{ pricing.category_discount }}%</p>
+            <p class="discount">{{ pricing.total_discount }}% OFF</p>
+            <p class="original-price">
+                Original Price:
+                <del>{{ pricing.original | inr }}</del>
+            </p>
+            <h3 class="final-price">{{ pricing.final_price | inr }}</h3>
+            <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <button type="submit">Add to Cart</button>
+            </form>
+            <a href="{{ url_for('product_details', product_id=product.id) }}">
+                <button type="button">View Details</button>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

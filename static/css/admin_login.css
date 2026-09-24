@@ -1,0 +1,162 @@
+/* FurniCraft Admin Login — Premium Brown Theme */
+
+:root {
+    --brown-dark: #3e2723;
+    --brown: #5d4037;
+    --brown-mid: #795548;
+    --brown-light: #a1887f;
+    --cream: #faf8f5;
+    --white: #ffffff;
+    --text-muted: #6d5c54;
+    --danger: #c62828;
+    --success: #2e7d32;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 50%, var(--brown-mid) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.admin-login-wrapper {
+    width: 100%;
+    max-width: 440px;
+}
+
+.admin-login-box {
+    background: var(--white);
+    padding: 42px 36px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.login-brand {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-brand .brand-icon {
+    font-size: 36px;
+    color: var(--brown-mid);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-brand h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-bottom: 6px;
+}
+
+.login-brand p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brown-dark);
+}
+
+.form-row input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid #e8ddd6;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: var(--brown-mid);
+    box-shadow: 0 0 0 3px rgba(121, 85, 72, 0.12);
+    background: var(--white);
+}
+
+.admin-login-box button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--brown), var(--brown-dark));
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+}
+
+.admin-login-box button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(93, 64, 55, 0.35);
+}
+
+.login-hint {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 18px;
+}
+
+.login-hint a {
+    color: var(--brown-mid);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-hint a:hover {
+    color: var(--brown-dark);
+    text-decoration: underline;
+}
+
+.flash {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.flash-success {
+    background: #e8f5e9;
+    color: var(--success);
+}
+
+.flash-error {
+    background: #ffebee;
+    color: var(--danger);
+}
+
+.flash-info {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+@media (max-width: 480px) {
+    .admin-login-box {
+        padding: 32px 24px;
+    }
+}

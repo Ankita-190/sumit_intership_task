@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet"
+          href="products.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <h2>My Shop</h2>
+
+        <div>
+
+            <a href="menu.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+            <a href="login.html">
+                Logout
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HEADING ================= -->
+
+    <h1>
+        Our Products
+    </h1>
+
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search product..."
+            onkeyup="searchProducts()">
+
+    </div>
+
+
+
+    <!-- ================= CATEGORY ================= -->
+
+    <div class="categories">
+
+        <button
+            onclick="filterProducts('All')">
+            All
+        </button>
+
+        <button
+            onclick="filterProducts('Chair')">
+            Chair
+        </button>
+
+        <button
+            onclick="filterProducts('Table')">
+            Table
+        </button>
+
+        <button
+            onclick="filterProducts('Sofa')">
+            Sofa
+        </button>
+
+        <button
+            onclick="filterProducts('Bed')">
+            Bed
+        </button>
+
+    </div>
+
+
+
+    <!-- ================= PRODUCT CONTAINER ================= -->
+
+    <div
+        class="product-container"
+        id="productContainer">
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="products.js"></script>
+
+
+</body>
+
+</html>

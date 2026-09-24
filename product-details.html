@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details</title>
+
+    <link rel="stylesheet" href="product-details.css">
+
+</head>
+
+<body>
+
+    <nav>
+
+        <h2>My Shop</h2>
+
+        <div>
+            <a href="menu.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="login.html">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <div class="details-container">
+
+        <!-- PRODUCT IMAGE -->
+
+        <div class="details-image">
+
+            <img id="productImage" src="" alt="Product">
+
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <div class="details-info">
+
+            <h1 id="productName"></h1>
+
+            <p id="productCategory"></p>
+
+            <h2 id="productPrice"></h2>
+
+            <p>
+                This is a high-quality furniture product.
+                It is designed with a modern look and provides
+                comfort and durability for your home.
+            </p>
+
+
+            <div class="quantity">
+
+                <label>Quantity:</label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    value="1"
+                    min="1">
+
+            </div>
+
+
+            <button onclick="addToCart()">
+                Add to Cart
+            </button>
+
+            <button onclick="goBack()">
+                Back to Products
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="product-details.js"></script>
+
+</body>
+
+</html>

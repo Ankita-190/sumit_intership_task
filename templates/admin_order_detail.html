@@ -1,0 +1,111 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Order {{ order.order_code }}{% endblock %}
+{% block page_heading %}Order Details{% endblock %}
+
+{% block admin_content %}
+<a href="{{ url_for('admin_dashboard', section='orders') }}" class="back-link">&larr; Back to Orders</a>
+
+<div class="section-header">
+    <div>
+        <h2>{{ order.order_code }}</h2>
+        <p>Placed on {{ order.created_at.strftime('%d %B %Y at %H:%M') }}</p>
+    </div>
+    <span class="status-badge status-{{ order.status | lower }}">{{ order.status }}</span>
+</div>
+
+<div class="detail-grid">
+    <div class="detail-card">
+        <h3>Customer Information</h3>
+        <div class="detail-row">
+            <span class="label">Name</span>
+            <span class="value">{{ order.name }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Email</span>
+            <span class="value">{{ order.email }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Mobile</span>
+            <span class="value">{{ order.mobile }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Address</span>
+            <span class="value">{{ order.address }}, {{ order.city }} - {{ order.pincode }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Payment</span>
+            <span class="value">{{ order.payment }}</span>
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <h3>Order Summary</h3>
+        <div class="detail-row">
+            <span class="label">Subtotal</span>
+            <span class="value">{{ order.subtotal | inr }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Tax (18%)</span>
+            <span class="value">{{ order.tax | inr }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Discount</span>
+            <span class="value">- {{ order.discount | inr }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Final Amount</span>
+            <span class="value order-total">{{ order.final_amount | inr }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="section-header">
+    <h2>Order Items</h2>
+</div>
+
+<div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Unit Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items %}
+            <tr>
+                <td>
+                    <div class="table-product">
+                        <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
+                        <span>{{ item.name }}</span>
+                    </div>
+                </td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.price | inr }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ (item.price * item.quantity) | inr }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="form-card" style="margin-top:24px; max-width:400px;">
+    <h3 style="margin-bottom:16px; font-size:16px; color:var(--brown-dark);">Update Order Status</h3>
+    <form method="post" action="{{ url_for('admin_update_status', order_id=order.id) }}">
+        <input type="hidden" name="redirect" value="detail">
+        <div class="form-group">
+            <select name="status" class="status-select" style="width:100%;">
+                {% for status in order_statuses %}
+                <option value="{{ status }}" {% if order.status == status %}selected{% endif %}>{{ status }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Status</button>
+    </form>
+</div>
+{% endblock %}

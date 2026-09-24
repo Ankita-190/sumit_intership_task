@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Order History{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/order-history.css') }}">
+{% endblock %}
+{% block content %}
+<h1>My Order History</h1>
+<div id="orderContainer">
+    {% if not orders %}
+        <div class="empty-orders">
+            <h2>No orders yet</h2>
+            <p>Place an order to see it here.</p>
+            <a href="{{ url_for('products') }}">Shop products</a>
+        </div>
+    {% endif %}
+    {% for order in orders %}
+        <div class="order-box">
+            <div class="order-header">
+                <h3>{{ order.order_code }}</h3>
+                <span>{{ order.status }}</span>
+            </div>
+            <div class="customer-info">
+                <p><strong>Date:</strong> {{ order.created_at.strftime('%d-%m-%Y %H:%M') }}</p>
+                <p><strong>Name:</strong> {{ order.name }}</p>
+                <p><strong>Address:</strong> {{ order.address }}, {{ order.city }} - {{ order.pincode }}</p>
+                <p><strong>Payment:</strong> {{ order.payment }}</p>
+            </div>
+            <div class="products">
+                {% for item in order.items %}
+                <div class="order-product">
+                    <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
+                    <div>
+                        <h3>{{ item.name }}</h3>
+                        <p>Qty: {{ item.quantity }}</p>
+                        <p>{{ item.price | inr }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="order-total">
+                <p>Subtotal: {{ order.subtotal | inr }}</p>
+                <p>Tax: {{ order.tax | inr }}</p>
+                <p>Discount: {{ order.discount | inr }}</p>
+                <h2>{{ order.final_amount | inr }}</h2>
+                <a href="{{ url_for('receipt', order_code=order.order_code) }}">View Receipt</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

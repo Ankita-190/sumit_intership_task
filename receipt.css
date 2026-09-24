@@ -1,0 +1,389 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f5f5f5;
+
+    color: #333;
+
+}
+
+
+/* NAVBAR */
+
+nav {
+
+    background-color: #222;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 40px;
+
+}
+
+
+nav h2 {
+
+    font-size: 24px;
+
+}
+
+
+nav div {
+
+    display: flex;
+
+    gap: 20px;
+
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+
+nav a:hover {
+
+    color: #ff9800;
+
+}
+
+
+/* PAGE HEADING */
+
+body > h1 {
+
+    text-align: center;
+
+    margin: 35px 0;
+
+}
+
+
+/* RECEIPT CONTAINER */
+
+#receiptContainer {
+
+    width: 800px;
+
+    max-width: 95%;
+
+    margin: auto;
+
+}
+
+
+/* RECEIPT */
+
+.receipt {
+
+    background-color: white;
+
+    padding: 35px;
+
+    margin-bottom: 35px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.15);
+
+}
+
+
+/* HEADER */
+
+.receipt-header {
+
+    text-align: center;
+
+    border-bottom: 2px solid #ddd;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.receipt-header h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.receipt-header h3 {
+
+    margin-bottom: 8px;
+
+}
+
+
+.receipt-header p {
+
+    color: #666;
+
+}
+
+
+/* DETAILS */
+
+.order-details,
+.customer-details {
+
+    margin-bottom: 25px;
+
+}
+
+
+.order-details h3,
+.customer-details h3,
+.products-section > h3 {
+
+    margin-bottom: 15px;
+
+}
+
+
+.order-details p,
+.customer-details p {
+
+    margin-bottom: 8px;
+
+}
+
+
+/* PRODUCTS */
+
+.receipt-product {
+
+    display: flex;
+
+    gap: 20px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+.receipt-product img {
+
+    width: 110px;
+
+    height: 110px;
+
+    object-fit: contain;
+
+    background-color: #f5f5f5;
+
+    border-radius: 8px;
+
+}
+
+
+.product-info h3 {
+
+    margin-bottom: 8px;
+
+}
+
+
+.product-info p {
+
+    margin-bottom: 5px;
+
+    color: #666;
+
+}
+
+
+/* BILL */
+
+.bill {
+
+    text-align: right;
+
+    margin-top: 25px;
+
+}
+
+
+.bill p {
+
+    margin-bottom: 8px;
+
+}
+
+
+.bill h2 {
+
+    color: #28a745;
+
+    margin-top: 15px;
+
+}
+
+
+/* BUTTON */
+
+.receipt-buttons {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+
+.receipt-buttons button {
+
+    padding: 10px 25px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: #28a745;
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+
+.receipt-buttons button:hover {
+
+    background-color: #218838;
+
+}
+
+
+/* EMPTY */
+
+.empty-receipt {
+
+    background-color: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+}
+
+
+.empty-receipt p {
+
+    margin: 15px;
+
+}
+
+
+.empty-receipt a {
+
+    color: blue;
+
+    text-decoration: none;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    nav {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    nav div {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+
+    .receipt {
+
+        padding: 20px;
+
+    }
+
+
+    .receipt-product {
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+/* PRINT */
+
+@media print {
+
+    nav,
+    body > h1,
+    .receipt:not(:first-of-type),
+    .receipt-buttons {
+
+        display: none;
+
+    }
+
+
+    body {
+
+        background-color: white;
+
+    }
+
+
+    .receipt {
+
+        box-shadow: none;
+
+        margin: 0;
+
+        width: 100%;
+
+    }
+
+}

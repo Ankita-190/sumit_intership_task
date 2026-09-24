@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | FurniCraft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_login.css') }}">
+</head>
+<body>
+    <div class="admin-login-wrapper">
+        <div class="admin-login-box">
+            <div class="login-brand">
+                <span class="brand-icon">&#9670;</span>
+                <h1>FurniCraft Admin</h1>
+                <p>Sign in to manage your furniture store</p>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="post">
+                <div class="form-row">
+                    <label for="adminEmail">Admin Email</label>
+                    <input type="email" id="adminEmail" name="adminEmail" placeholder="admin@gmail.com" required>
+                </div>
+                <div class="form-row">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+
+            <p class="login-hint">Demo: admin@gmail.com / admin123</p>
+            <p class="login-hint"><a href="{{ url_for('login') }}">&larr; Back to Customer Login</a></p>
+        </div>
+    </div>
+</body>
+</html>

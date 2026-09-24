@@ -1,0 +1,696 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ===============================
+   BODY
+================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+
+/* ===============================
+   NAVBAR
+================================ */
+
+nav {
+    background: #222;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 50px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav h2 {
+    font-size: 24px;
+}
+
+nav div {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff9800;
+}
+
+
+/* ===============================
+   MAIN HEADING
+================================ */
+
+h1 {
+    text-align: center;
+
+    margin: 40px 0 30px;
+
+    font-size: 32px;
+}
+
+
+/* ===============================
+   DASHBOARD
+================================ */
+
+.dashboard {
+    width: 90%;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ===============================
+   DASHBOARD CARD
+================================ */
+
+.card {
+    width: 300px;
+
+    background: white;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+
+    font-size: 21px;
+}
+
+.card p {
+    font-size: 42px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+    color: #007bff;
+}
+
+.card button {
+    padding: 11px 22px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #007bff;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #0056b3;
+
+    transform: scale(1.03);
+}
+
+
+/* ===============================
+   ADMIN CONTENT
+================================ */
+
+#adminContent {
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 45px auto;
+}
+
+#adminContent > h2 {
+    font-size: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ===============================
+   MANAGEMENT HEADER
+================================ */
+
+.management-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.management-header h2 {
+    font-size: 25px;
+}
+
+
+/* ===============================
+   ADD PRODUCT BUTTON
+================================ */
+
+.add-btn {
+    background: #28a745;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #218838;
+
+    transform: translateY(-2px);
+}
+
+
+/* ===============================
+   ADMIN PRODUCT
+================================ */
+
+.admin-product {
+    background: white;
+
+    padding: 20px;
+
+    margin-bottom: 18px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.1);
+
+    transition: 0.3s;
+}
+
+.admin-product:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===============================
+   PRODUCT IMAGE
+================================ */
+
+.admin-product img {
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: contain;
+
+    background: #f1f1f1;
+
+    border-radius: 10px;
+
+    padding: 8px;
+}
+
+
+/* ===============================
+   PRODUCT INFO
+================================ */
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    margin: 6px 0;
+
+    color: #666;
+}
+
+
+/* ===============================
+   EDIT BUTTON
+================================ */
+
+.edit-btn {
+    background: #007bff;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 18px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    margin-right: 8px;
+
+    transition: 0.3s;
+}
+
+.edit-btn:hover {
+    background: #0056b3;
+}
+
+
+/* ===============================
+   DELETE BUTTON
+================================ */
+
+.delete-btn {
+    background: #dc3545;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 18px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+
+/* ===============================
+   PRODUCT FORM
+================================ */
+
+.product-form {
+    width: 100%;
+
+    max-width: 600px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.product-form label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+    margin-top: 15px;
+}
+
+.product-form input,
+.product-form select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.product-form input:focus,
+.product-form select:focus {
+    border-color: #007bff;
+
+    box-shadow:
+        0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+
+/* ===============================
+   SAVE BUTTON
+================================ */
+
+.save-btn {
+    background: #28a745;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 22px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    margin-right: 10px;
+
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #218838;
+}
+
+
+/* ===============================
+   CANCEL BUTTON
+================================ */
+
+.cancel-btn {
+    background: #6c757d;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 22px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.cancel-btn:hover {
+    background: #545b62;
+}
+
+
+/* ===============================
+   NO DATA
+================================ */
+
+.no-data {
+    background: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-data h2 {
+    margin-bottom: 10px;
+}
+
+.no-data p {
+    color: #777;
+}
+
+
+/* ===============================
+   ORDER
+================================ */
+
+.admin-order {
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.1);
+
+    transition: 0.3s;
+}
+
+.admin-order:hover {
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===============================
+   ORDER HEADER
+================================ */
+
+.order-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* ===============================
+   STATUS
+================================ */
+
+.status {
+    background: #ff9800;
+
+    color: white;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ===============================
+   ORDER TEXT
+================================ */
+
+.admin-order p {
+    margin: 9px 0;
+
+    color: #555;
+
+    line-height: 1.5;
+}
+
+.admin-order h3 {
+    margin-bottom: 12px;
+}
+
+
+/* ===============================
+   ORDER SELECT
+================================ */
+
+.admin-order select {
+    padding: 10px 15px;
+
+    margin-top: 15px;
+
+    margin-right: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+/* ===============================
+   DELETE ORDER
+================================ */
+
+.delete-order {
+    background: #dc3545;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.delete-order:hover {
+    background: #c82333;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 18px;
+    }
+
+
+    nav div {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+
+    h1 {
+        font-size: 27px;
+
+        margin-top: 30px;
+    }
+
+
+    #adminContent {
+        width: 92%;
+    }
+
+
+    .management-header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        align-items: flex-start;
+    }
+
+
+    .admin-product {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .admin-product img {
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    .product-info {
+        width: 100%;
+    }
+
+
+    .product-form {
+        padding: 20px;
+    }
+
+
+    .order-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+
+    .admin-order select {
+        width: 100%;
+
+        margin-bottom: 10px;
+    }
+
+}

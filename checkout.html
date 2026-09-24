@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="checkout.css">
+
+</head>
+
+<body>
+
+    <nav>
+
+        <h2>My Shop</h2>
+
+        <div>
+
+            <a href="menu.html">Home</a>
+
+            <a href="products.html">Products</a>
+
+            <a href="cart.html">Cart</a>
+
+            <a href="login.html">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="checkout-container">
+
+        <h1>Checkout</h1>
+
+
+        <form onsubmit="placeOrder(event)">
+
+            <div class="form-row">
+
+                <label>Full Name:</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>Email:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>Mobile Number:</label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Enter mobile number"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>Address:</label>
+
+                <textarea
+                    id="address"
+                    placeholder="Enter your address"
+                    required></textarea>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>City:</label>
+
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Enter city"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>PIN Code:</label>
+
+                <input
+                    type="text"
+                    id="pincode"
+                    placeholder="Enter PIN code"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>Payment Method:</label>
+
+                <select id="payment" required>
+
+                    <option value="">
+                        Select Payment
+                    </option>
+
+                    <option value="COD">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="UPI">
+                        UPI
+                    </option>
+
+                    <option value="Card">
+                        Credit / Debit Card
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button type="submit">
+                Place Order
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+    <script src="checkout.js"></script>
+
+</body>
+
+</html>

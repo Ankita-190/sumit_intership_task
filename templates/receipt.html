@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Receipt{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/receipt.css') }}">
+{% endblock %}
+{% block content %}
+<h1>Order Receipt</h1>
+<div id="receiptContainer">
+    <div class="receipt">
+        <div class="receipt-header">
+            <h2>My Shop</h2>
+            <h3>{{ order.order_code }}</h3>
+            <p>{{ order.created_at.strftime('%d-%m-%Y %H:%M') }}</p>
+            <p>Status: {{ order.status }}</p>
+        </div>
+        <div class="customer-details">
+            <h3>Customer Details</h3>
+            <p><strong>Name:</strong> {{ order.name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            <p><strong>Mobile:</strong> {{ order.mobile }}</p>
+            <p><strong>Address:</strong> {{ order.address }}, {{ order.city }} - {{ order.pincode }}</p>
+            <p><strong>Payment:</strong> {{ order.payment }}</p>
+        </div>
+        <div class="products-section">
+            <h3>Products</h3>
+            {% for item in order.items %}
+            <div class="receipt-product">
+                <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
+                <div class="product-info">
+                    <h3>{{ item.name }}</h3>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Qty: {{ item.quantity }}</p>
+                    <p>{{ item.price | inr }} each</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="bill">
+            <p>Subtotal: {{ order.subtotal | inr }}</p>
+            <p>Tax (18%): {{ order.tax | inr }}</p>
+            <p>Discount: {{ order.discount | inr }}</p>
+            <h2>Final Amount: {{ order.final_amount | inr }}</h2>
+        </div>
+        <div class="receipt-buttons">
+            <button type="button" onclick="window.print()">Print</button>
+            <a href="{{ url_for('order_history') }}"><button type="button">Order History</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product-details.css') }}">
+{% endblock %}
+{% block content %}
+<div class="details-container">
+    <div class="details-image">
+        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+    </div>
+    <div class="details-info">
+        <h1>{{ product.name }}</h1>
+        <p>Category: {{ product.category }}</p>
+        <p>Category Discount: {{ pricing.category_discount }}% | Total {{ pricing.total_discount }}% OFF</p>
+        <p><del>{{ pricing.original | inr }}</del></p>
+        <h2>{{ pricing.final_price | inr }}</h2>
+        <p>{{ product.description }}</p>
+        <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+            <div class="quantity">
+                <label>Quantity:</label>
+                <input type="number" name="quantity" value="1" min="1">
+            </div>
+            <button type="submit">Add to Cart</button>
+            <a href="{{ url_for('products') }}"><button type="button">Back to Products</button></a>
+        </form>
+    </div>
+</div>
+{% endblock %}

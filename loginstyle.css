@@ -1,0 +1,52 @@
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+}
+
+.login-box {
+    width: 450px;
+    background-color: white;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    width: 100px;
+}
+
+.form-row input {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.register-link {
+    text-align: center;
+}
+
+.register-link a {
+    color: blue;
+    text-decoration: none;
+}

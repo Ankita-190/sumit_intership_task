@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}My Shop{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to My Shop</h1>
+        <p>Discover amazing products at the best prices.</p>
+        <a href="{{ url_for('products') }}">
+            <button class="shop-btn" type="button">Shop Now →</button>
+        </a>
+    </div>
+    <div class="hero-image"></div>
+</section>
+
+<section class="categories-section">
+    <h2>Shop By Category</h2>
+    <p class="category-text">Explore our popular categories</p>
+    <div class="category-container">
+        {% for category in categories %}
+        <a href="{{ url_for('products', category=category) }}" style="text-decoration:none;color:inherit;">
+            <div class="category-card">
+                <div class="category-icon"></div>
+                <h3>{{ category }}</h3>
+                <p>Shop {{ category.lower() }}s</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product-section">
+    <h2>Explore Our Products</h2>
+    <p>Find the perfect product for you.</p>
+    <div class="product-container">
+        {% for product, pricing in featured %}
+        <div class="product">
+            <div class="product-image">
+                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            </div>
+            <h2>{{ product.name }}</h2>
+            <p>Category: {{ product.category }}</p>
+            <p class="discount">{{ pricing.total_discount }}% OFF</p>
+            <h3 class="final-price">{{ pricing.final_price | inr }}</h3>
+            <a href="{{ url_for('product_details', product_id=product.id) }}">
+                <button type="button">View Details</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('products') }}">
+        <button class="view-btn" type="button">View All Products</button>
+    </a>
+</section>
+
+<footer>
+    <h3>My Shop</h3>
+    <p>Your one-stop shop for quality products.</p>
+    <p class="copyright">© {{ now_year }} My Shop. All Rights Reserved.</p>
+</footer>
+{% endblock %}

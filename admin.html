@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body>
+
+    <!-- ===============================
+         ADMIN NAVBAR
+    ================================ -->
+
+    <nav>
+
+        <h2>Shopping Website - Admin</h2>
+
+        <div>
+
+            <a href="admin.html">
+                Dashboard
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="admin_login.html" onclick="adminLogout()">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ===============================
+         DASHBOARD TITLE
+    ================================ -->
+
+    <h1>Admin Dashboard</h1>
+
+
+    <!-- ===============================
+         DASHBOARD CARDS
+    ================================ -->
+
+    <div class="dashboard">
+
+
+        <!-- PRODUCTS -->
+
+        <div class="card">
+
+            <h2>
+                Total Products
+            </h2>
+
+            <p id="productCount">
+                0
+            </p>
+
+            <button onclick="showProducts()">
+                Manage Products
+            </button>
+
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <div class="card">
+
+            <h2>
+                Total Orders
+            </h2>
+
+            <p id="orderCount">
+                0
+            </p>
+
+            <button onclick="showOrders()">
+                Manage Orders
+            </button>
+
+        </div>
+
+
+        <!-- USERS -->
+
+        <div class="card">
+
+            <h2>
+                Total Users
+            </h2>
+
+            <p id="userCount">
+                0
+            </p>
+
+            <button onclick="showUsers()">
+                Manage Users
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ===============================
+         ADMIN CONTENT
+    ================================ -->
+
+    <div id="adminContent">
+
+        <!-- Products / Orders / Users
+             will appear here -->
+
+    </div>
+
+
+    <!-- ===============================
+         ADMIN JAVASCRIPT
+    ================================ -->
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

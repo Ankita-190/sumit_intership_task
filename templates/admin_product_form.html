@@ -1,0 +1,55 @@
+{% extends "admin_base.html" %}
+
+{% block title %}{% if product %}Edit Product{% else %}Add Product{% endif %}{% endblock %}
+{% block page_heading %}{% if product %}Edit Product{% else %}Add New Product{% endif %}{% endblock %}
+
+{% block admin_content %}
+<a href="{{ url_for('admin_dashboard', section='products') }}" class="back-link">&larr; Back to Products</a>
+
+<div class="form-card">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" id="name" name="name" value="{{ product.name if product else '' }}" placeholder="e.g. Wooden Dining Chair" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+                {% for category in categories %}
+                <option value="{{ category }}" {% if product and product.category == category %}selected{% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price (₹)</label>
+            <input type="number" id="price" name="price" min="1" step="1" value="{{ product.price|int if product else '' }}" placeholder="2500" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Describe the product...">{{ product.description if product else '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="productImage">{% if product %}Change Product Image{% else %}Product Image{% endif %}</label>
+            <input type="file" id="productImage" name="image" accept="image/*" {% if not product %}required{% endif %}>
+            <div class="form-preview">
+                {% if product %}
+                <img id="imagePreview" src="{{ url_for('static', filename=product.image) }}" alt="Preview">
+                {% else %}
+                <img id="imagePreview" src="" alt="Preview" style="display:none;">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">
+                {% if product %}Update Product{% else %}Add Product{% endif %}
+            </button>
+            <a href="{{ url_for('admin_dashboard', section='products') }}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

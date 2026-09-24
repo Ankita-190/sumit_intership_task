@@ -1,0 +1,238 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+{% block page_heading %}
+    {% if section == 'products' %}Product Management
+    {% elif section == 'orders' %}Order Management
+    {% elif section == 'users' %}User Management
+    {% else %}Dashboard{% endif %}
+{% endblock %}
+
+{% block admin_content %}
+
+{% if not section %}
+{# ---- Dashboard Overview ---- #}
+<div class="stats-grid">
+    <div class="stat-card products">
+        <div class="stat-label">Total Products</div>
+        <div class="stat-value">{{ product_count }}</div>
+        <a href="{{ url_for('admin_dashboard', section='products') }}" class="stat-link">Manage Products &rarr;</a>
+    </div>
+    <div class="stat-card orders">
+        <div class="stat-label">Total Orders</div>
+        <div class="stat-value">{{ order_count }}</div>
+        <a href="{{ url_for('admin_dashboard', section='orders') }}" class="stat-link">View Orders &rarr;</a>
+    </div>
+    <div class="stat-card users">
+        <div class="stat-label">Total Users</div>
+        <div class="stat-value">{{ user_count }}</div>
+        <a href="{{ url_for('admin_dashboard', section='users') }}" class="stat-link">View Users &rarr;</a>
+    </div>
+    <div class="stat-card revenue">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value">{{ total_revenue | inr }}</div>
+        <a href="{{ url_for('admin_dashboard', section='orders') }}" class="stat-link">View Orders &rarr;</a>
+    </div>
+</div>
+
+<div class="recent-section">
+    <h3>Recent Orders</h3>
+    {% if recent_orders %}
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in recent_orders %}
+                <tr>
+                    <td><strong>{{ order.order_code }}</strong></td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.final_amount | inr }}</td>
+                    <td>
+                        <span class="status-badge status-{{ order.status | lower }}">{{ order.status }}</span>
+                    </td>
+                    <td>{{ order.created_at.strftime('%d %b %Y') }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_order_detail', order_id=order.id) }}" class="btn btn-outline btn-sm">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3>No Orders Yet</h3>
+        <p>Orders will appear here once customers start purchasing.</p>
+    </div>
+    {% endif %}
+</div>
+
+{% elif section == 'products' %}
+{# ---- Product Management ---- #}
+<div class="section-header">
+    <div>
+        <h2>All Products</h2>
+        <p>{{ product_count }} product{{ 's' if product_count != 1 else '' }} in catalog</p>
+    </div>
+    <a href="{{ url_for('admin_add_product') }}" class="btn btn-primary">+ Add Product</a>
+</div>
+
+{% if products %}
+<div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    <div class="table-product">
+                        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+                        <span>{{ product.name }}</span>
+                    </div>
+                </td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price | inr }}</td>
+                <td>
+                    <div class="table-actions">
+                        <a href="{{ url_for('admin_edit_product', product_id=product.id) }}" class="btn btn-outline btn-sm">Edit</a>
+                        <form method="post" action="{{ url_for('admin_delete_product', product_id=product.id) }}" style="display:inline;" onsubmit="return confirm('Delete this product permanently?');">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>No Products Available</h3>
+    <p>Start by adding your first furniture product.</p>
+    <a href="{{ url_for('admin_add_product') }}" class="btn btn-primary">+ Add Product</a>
+</div>
+{% endif %}
+
+{% elif section == 'orders' %}
+{# ---- Order Management ---- #}
+<div class="section-header">
+    <div>
+        <h2>All Orders</h2>
+        <p>{{ order_count }} order{{ 's' if order_count != 1 else '' }} &middot; Revenue: {{ total_revenue | inr }}</p>
+    </div>
+</div>
+
+{% if orders %}
+<div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Payment</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td><strong>{{ order.order_code }}</strong></td>
+                <td>
+                    {{ order.name }}<br>
+                    <small style="color:var(--text-muted)">{{ order.email }}</small>
+                </td>
+                <td>{{ order.payment }}</td>
+                <td>{{ order.final_amount | inr }}</td>
+                <td>
+                    <span class="status-badge status-{{ order.status | lower }}">{{ order.status }}</span>
+                </td>
+                <td>{{ order.created_at.strftime('%d %b %Y') }}</td>
+                <td>
+                    <div class="table-actions">
+                        <a href="{{ url_for('admin_order_detail', order_id=order.id) }}" class="btn btn-outline btn-sm">Details</a>
+                        <form method="post" action="{{ url_for('admin_update_status', order_id=order.id) }}" style="display:inline;">
+                            <select name="status" class="status-select">
+                                {% for status in order_statuses %}
+                                <option value="{{ status }}" {% if order.status == status %}selected{% endif %}>{{ status }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>No Orders Yet</h3>
+    <p>Customer orders will show up here.</p>
+</div>
+{% endif %}
+
+{% elif section == 'users' %}
+{# ---- User Management ---- #}
+<div class="section-header">
+    <div>
+        <h2>Registered Users</h2>
+        <p>{{ user_count }} registered customer{{ 's' if user_count != 1 else '' }}</p>
+    </div>
+</div>
+
+{% if users %}
+<div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Gender</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><strong>{{ user.name }}</strong></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.mobile }}</td>
+                <td>{{ user.gender or '—' }}</td>
+                <td>{{ user.created_at.strftime('%d %b %Y') if user.created_at else '—' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>No Registered Users</h3>
+    <p>Users will appear here after they register on the store.</p>
+</div>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

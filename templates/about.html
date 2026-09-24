@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+{% block content %}
+<section class="product-section">
+    <h2>About My Shop</h2>
+    <p>
+        My Shop is a furniture store with chairs, tables, sofas, and beds.
+        Browse by category, add items to your cart, and place orders online.
+    </p>
+</section>
+<footer>
+    <h3>My Shop</h3>
+    <p>Your one-stop shop for quality products.</p>
+    <p class="copyright">© {{ now_year }} My Shop. All Rights Reserved.</p>
+</footer>
+{% endblock %}

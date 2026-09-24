@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+{% endblock %}
+{% block content %}
+<div class="checkout-container">
+    <h1>Checkout</h1>
+    <div class="order-summary-box">
+        <p>Subtotal: {{ subtotal | inr }}</p>
+        <p>Tax (18%): {{ tax | inr }}</p>
+        <p>Discount: {{ discount | inr }}</p>
+        <h3>Final Amount: {{ final_amount | inr }}</h3>
+    </div>
+    <form method="post">
+        <div class="form-row">
+            <label>Full Name:</label>
+            <input type="text" name="name" value="{{ current_user.name }}" required>
+        </div>
+        <div class="form-row">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ current_user.email }}" required>
+        </div>
+        <div class="form-row">
+            <label>Mobile Number:</label>
+            <input type="tel" name="mobile" value="{{ current_user.mobile }}" required>
+        </div>
+        <div class="form-row">
+            <label>Address:</label>
+            <textarea name="address" required></textarea>
+        </div>
+        <div class="form-row">
+            <label>City:</label>
+            <input type="text" name="city" required>
+        </div>
+        <div class="form-row">
+            <label>PIN Code:</label>
+            <input type="text" name="pincode" required>
+        </div>
+        <div class="form-row">
+            <label>Payment Method:</label>
+            <select name="payment" required>
+                <option value="">Select Payment</option>
+                <option value="COD">Cash on Delivery</option>
+                <option value="UPI">UPI</option>
+                <option value="Card">Credit / Debit Card</option>
+            </select>
+        </div>
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+}
+
+.form-box {
+    width: 500px;
+    background-color: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    width: 160px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row input[type="password"] {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.terms {
+    margin: 20px 0;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+.login-link {
+    text-align: center;
+}
+
+.login-link a {
+    color: blue;
+    text-decoration: none;
+}
